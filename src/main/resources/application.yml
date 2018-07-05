@@ -1,18 +1,14 @@
 server:
   port: 8082
 eureka:
+#指定当前服务为client
+  client:
+    serviceUrl:
+      defaultZone: http://47.95.253.137:8888/eureka/
   instance:
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
 
-#    lease-expiration-duration-in-seconds: 10
-#    lease-renewal-interval-in-seconds: 5
-#指定当前服务为client
-  client:
-  #配置注册中心的url地址
-    serviceUrl:
-#      defaultZone: http://localhost:8888/eureka/
-      defaultZone: http://47.95.253.137:8888/eureka/
 spring:
 #配置当前服务名，服务与服务之间的相互调用依据就是用服务名来标识的
   application:
