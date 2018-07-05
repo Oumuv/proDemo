@@ -1,0 +1,51 @@
+server:
+  port: 8082
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+
+#    lease-expiration-duration-in-seconds: 10
+#    lease-renewal-interval-in-seconds: 5
+#指定当前服务为client
+  client:
+  #配置注册中心的url地址
+    serviceUrl:
+#      defaultZone: http://localhost:8888/eureka/
+      defaultZone: http://47.95.253.137:8888/eureka/
+spring:
+#配置当前服务名，服务与服务之间的相互调用依据就是用服务名来标识的
+  application:
+    name: pro-c1
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.95.253.137:8088/springboot?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    username: root
+    password: root
+
+  redis:
+      host: 47.95.253.137
+      port: 6379
+      database: 1
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 500
+        min-idle: 0
+      timeout: 0
+
+
+mybatis:
+  #mapper.xml位置在resources/mybatis文件下
+  mapper-locations: classpath*:mybatis/*Mapper.xml
+  #指定映射的实体所在位置
+  type-aliases-package: com.oumuv.entity
+
+
+    #服务过期时间配置,超过这个时间没有接收到心跳EurekaServer就会将这个实例剔除
+    #注意，EurekaServer一定要设置eureka.server.eviction-interval-timer-in-ms否则这个配置无效，这个配置一般为服务刷新时间配置的三倍
+    #默认90s
+#    eureka.instance.lease-expiration-duration-in-seconds=15
+    #服务刷新时间配置，每隔这个时间会主动心跳一次
+    #默认30s
+#    eureka.instance.lease-renewal-interval-in-seconds=5
