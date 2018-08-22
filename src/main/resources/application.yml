@@ -23,6 +23,7 @@ spring:
     username: root
     password: root
 
+#redis配置
   redis:
       host: 47.95.253.137
       port: 6379
@@ -34,12 +35,16 @@ spring:
         min-idle: 0
       timeout: 0
 
+#      solr配置
+  data:
+    solr:
+      host: http://192.168.6.128:8081/solr/collectionA
 
-mybatis:
-  #mapper.xml位置在resources/mybatis文件下
-  mapper-locations: classpath*:mybatis/*Mapper.xml
-  #指定映射的实体所在位置
-  type-aliases-package: com.oumuv.entity
+#mybatis:
+#  #mapper.xml位置在resources/mybatis文件下
+#  mapper-locations: classpath*:mybatis/*Mapper.xml
+#  #指定映射的实体所在位置
+#  type-aliases-package: com.oumuv.entity
 
 
     #服务过期时间配置,超过这个时间没有接收到心跳EurekaServer就会将这个实例剔除
